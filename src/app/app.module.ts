@@ -13,6 +13,7 @@ import { ShopItemComponent } from './shop-item/shop-item.component';
 import { FooterComponent } from './footer/footer.component';
 import { MatInputModule } from '@angular/material/input';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SearchResultComponent } from './search-result/search-result.component';
     FeaturedItemsComponent,
     ShopItemComponent,
     FooterComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
