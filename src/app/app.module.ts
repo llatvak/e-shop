@@ -10,6 +10,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ShopCartComponent } from './shop-cart/shop-cart.component';
 import { FeaturedItemsComponent } from './featured-items/featured-items.component';
 import { ShopItemComponent } from './shop-item/shop-item.component';
+import { FooterComponent } from './footer/footer.component';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -17,14 +19,16 @@ import { ShopItemComponent } from './shop-item/shop-item.component';
     NavbarComponent,
     ShopCartComponent,
     FeaturedItemsComponent,
-    ShopItemComponent
+    ShopItemComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
