@@ -10,6 +10,14 @@ a {
     margin-left: 20px;
 }
 
+img {
+    padding-top: 5px;
+}
+
+.home {
+    margin: 5px;
+}
+
 .search_input {
     margin-left: 5px;
 }
