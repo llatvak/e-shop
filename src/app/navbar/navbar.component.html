@@ -6,11 +6,24 @@
     <!-- This fills the remaining space of the current row -->
     <span class="fill-space"></span>
     
-    <!-- Shopping cart icon button -->
+    <!-- Item search -->
+    <span>
+        <fa-icon [icon]="faSearch" size="lg"></fa-icon>
+        <input matInput type="search" placeholder="Search items...">
+    </span>
+
+    <!-- Shopping cart -->
     <span>
         <a href="">
             <fa-icon [icon]="faShoppingCart" size="lg"></fa-icon>
             {{shopCartItemCount}}
+        </a>
+    </span>
+
+    <!-- User login -->
+    <span>
+        <a href="">
+            <fa-icon [icon]="faUserCircle" size="lg"></fa-icon>
         </a>
     </span>
 </mat-toolbar>

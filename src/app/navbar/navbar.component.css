@@ -7,6 +7,11 @@
 a {
     color:white;
     text-decoration: none;
+    margin-left: 20px;
+}
+
+input {
+    margin-left: 5px;
 }
 
 a:hover {
