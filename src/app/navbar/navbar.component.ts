@@ -8,6 +8,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 })
 export class NavbarComponent implements OnInit {
   faShoppingCart = faShoppingCart;
+  shopCartItemCount = 0;
   constructor() { }
 
   ngOnInit(): void {
