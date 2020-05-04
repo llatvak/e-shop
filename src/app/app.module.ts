@@ -5,15 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ShopCartComponent } from './shop-cart/shop-cart.component';
 import { FeaturedItemsComponent } from './featured-items/featured-items.component';
 import { ShopItemComponent } from './shop-item/shop-item.component';
 import { FooterComponent } from './footer/footer.component';
-import { MatInputModule } from '@angular/material/input';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { LoginComponent } from './login/login.component';
+import { MaterialModule } from './material.module';
+
 
 @NgModule({
   declarations: [
@@ -30,9 +30,8 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
     FontAwesomeModule,
-    MatInputModule
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
