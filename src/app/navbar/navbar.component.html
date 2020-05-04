@@ -17,7 +17,7 @@
     <span>
         <fa-icon [icon]="faSearch" size="lg"></fa-icon>
         <mat-form-field class="search_input">
-            <input matInput type="search" placeholder="Search items...">
+            <input matInput type="search" placeholder="Search items..." (keyup.enter)="onEnter()">
         </mat-form-field>
     </span>
 
