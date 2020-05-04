@@ -3,20 +3,19 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
-
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
-  imports: [
-    MatInputModule,
-    MatToolbarModule,
-    MatFormFieldModule,
-    MatButtonModule
-  ],
   exports: [
     MatInputModule,
     MatToolbarModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule
   ]
 })
 export class MaterialModule {}

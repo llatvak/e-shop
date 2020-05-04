@@ -13,7 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { LoginComponent } from './login/login.component';
 import { MaterialModule } from './material.module';
-
+import { MainNavComponent } from './main-nav/main-nav.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,8 @@ import { MaterialModule } from './material.module';
     ShopItemComponent,
     FooterComponent,
     SearchResultComponent,
-    LoginComponent
+    LoginComponent,
+    MainNavComponent
   ],
   imports: [
     BrowserModule,

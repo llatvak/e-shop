@@ -1,7 +1,62 @@
+.login-container {
+    background-color: red;
+    width: 50%;
+    display: block;
+}
+
+.form-container {
+    background-color: #607d8b;
+    display: block;
+    height: 50%;
+    width: 50%;
+}
+
+.sidenav-container {
+    height: 100%;
+}
+
+.sidenav {
+    width: 200px;
+    box-shadow: 3px 0 6px rgba(0, 0, 0, 0.24);
+}
+
+.hidden {
+    display: none;
+}
+
+.example-full-width {
+    width: 50%;
+    max-width: 300px;
+}
+
 .login-form {
     padding: 15px;
 }
 
-input {
-    color: black;
+h2 {
+    margin: 0px 10px 10px 10px;
+    color: white;
+}
+
+button {
+    background-color: #7b1fa2;
+    margin: 10px;
+}
+
+span {
+    color:white;
+    margin: 10px;
+}
+
+a {
+    background-color: #7b1fa2;
+    color: white;
+}
+
+input, select, textarea{
+    color: white;
+}
+
+textarea:focus, input:focus {
+    color: white;
 }
