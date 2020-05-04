@@ -9,13 +9,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ShopCartComponent } from './shop-cart/shop-cart.component';
 import { FeaturedItemsComponent } from './featured-items/featured-items.component';
+import { ShopItemComponent } from './shop-item/shop-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     ShopCartComponent,
-    FeaturedItemsComponent
+    FeaturedItemsComponent,
+    ShopItemComponent
   ],
   imports: [
     BrowserModule,
