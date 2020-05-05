@@ -6,6 +6,17 @@
   width: 200px;
 }
 
+a {
+  color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+a:hover {
+  color: gray;
+}
+
 .sidenav .mat-toolbar {
   background: inherit;
 }

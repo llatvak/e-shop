@@ -32,9 +32,30 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
+      <span>
+        <!-- Icon from <a href="https://icons8.com/icon/80319/home">Home icon by Icons8</a> -->
+        <!-- Page icon and title and navigation to home page -->
+        <a class="home" href="/">
+            <img src="https://img.icons8.com/flat_round/32/000000/home--v1.png"/>
+        </a>
+      </span>
       <span>FlotsamShop</span>
       <!-- This fills the remaining space of the current row -->
       <span class="fill-space"></span>
+      <!-- Shopping cart -->
+      <span *ngIf="!(isHandset$ | async)">
+        <a href="/shop-cart">
+            <fa-icon [icon]="faShoppingCart" size="lg"></fa-icon>
+            {{shopCartItemCount}}
+        </a>
+      </span>
+      <!-- User login -->
+      <span *ngIf="!(isHandset$ | async)">
+          <a href="/login">
+              <fa-icon [icon]="faUserCircle" size="lg"></fa-icon>
+          </a>
+      </span>
+      <!-- Search field -->
       <span>
         <fa-icon [icon]="faSearch"></fa-icon>
         <mat-form-field class="search_input">
