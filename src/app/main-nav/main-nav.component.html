@@ -32,14 +32,14 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>
+      <span class="home">
         <!-- Icon from <a href="https://icons8.com/icon/80319/home">Home icon by Icons8</a> -->
         <!-- Page icon and title and navigation to home page -->
-        <a class="home" href="/">
+        <a href="/">
             <img src="https://img.icons8.com/flat_round/32/000000/home--v1.png"/>
         </a>
       </span>
-      <span>FlotsamShop</span>
+      <span *ngIf="!(isHandset$ | async)"><a href="/">FlotsamShop</a></span>
       <!-- This fills the remaining space of the current row -->
       <span class="fill-space"></span>
       <!-- Shopping cart -->
