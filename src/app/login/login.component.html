@@ -1,18 +1,20 @@
 <!-- Login form -->
-<div class="form-container">
-  <h2>Login</h2>
-  <form class="login-form">
-      <mat-form-field class="example-full-width">
-        <mat-label>Username:</mat-label>
-        <input matInput type="text" placeholder="Username...">
-      </mat-form-field>
-      <br>
-      <mat-form-field class="example-full-width">
-        <mat-label>Password:</mat-label>
-        <input matInput type="password" placeholder="Password...">
-      </mat-form-field>
-      <br>
-      <button type="submit" mat-button color="primary" onsubmit="login(e)"><span>Login</span></button>
-      <a mat-button>Sign up</a>
-  </form>
+<div class="login-container">
+  <div class="form-container">
+    <form [formGroup]="loginForm" (submit)="submit()" class="login-form">
+        <legend><h2>Login</h2></legend>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>E-mail:</mat-label>
+          <input matInput type="text" placeholder="Username...">
+        </mat-form-field>
+        
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Password:</mat-label>
+          <input matInput type="password" placeholder="Password...">
+        </mat-form-field>
+        
+        <button type="submit" mat-button color="primary"><span>Login</span></button>
+        <a mat-button>Sign up</a>
+    </form>
+  </div>
 </div>

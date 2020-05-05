@@ -13,6 +13,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
 import { LoginComponent } from './login/login.component';
 import { MaterialModule } from './material.module';
 import { MainNavComponent } from './main-nav/main-nav.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MainNavComponent } from './main-nav/main-nav.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
+    ReactiveFormsModule,
     MaterialModule
   ],
   providers: [],
