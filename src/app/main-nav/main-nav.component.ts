@@ -10,6 +10,9 @@ import { faShoppingCart, faUserCircle, faSearch } from '@fortawesome/free-solid-
   styleUrls: ['./main-nav.component.css']
 })
 export class MainNavComponent {
+  faShoppingCart = faShoppingCart;
+  faUserCircle = faUserCircle;
+  faSearch = faSearch;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(

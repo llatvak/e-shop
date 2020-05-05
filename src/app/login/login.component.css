@@ -1,14 +1,9 @@
-.login-container {
-    background-color: red;
-    width: 50%;
-    display: block;
-}
-
 .form-container {
     background-color: #607d8b;
     display: block;
-    height: 50%;
-    width: 50%;
+    height: 25%;
+    margin: 100px;
+    width: 75%;
 }
 
 .sidenav-container {
