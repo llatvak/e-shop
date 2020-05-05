@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShopItemComponent implements OnInit {
 
+  productTitle: string;
+  productImageUrl: string;
+
   constructor() { }
 
   ngOnInit(): void {
