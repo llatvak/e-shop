@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shop-item.component.css']
 })
 export class ShopItemComponent implements OnInit {
-
+  // Get these from featured-items
   productTitle: string;
   productImageUrl: string;
 
