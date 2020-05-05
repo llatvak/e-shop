@@ -23,7 +23,7 @@ export class MainNavComponent {
     );
 
   constructor(private breakpointObserver: BreakpointObserver, private router: Router) {}
-  
+
   onEnter(): void {
     this.router.navigate(['/search-result']);
   }

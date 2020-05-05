@@ -29,7 +29,7 @@
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+        *ngIf="(isHandset$ | async)">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span class="home">
@@ -42,6 +42,13 @@
       <span *ngIf="!(isHandset$ | async)"><a href="/">FlotsamShop</a></span>
       <!-- This fills the remaining space of the current row -->
       <span class="fill-space"></span>
+      <!-- Search field -->
+      <span>
+        <fa-icon [icon]="faSearch"></fa-icon>
+        <mat-form-field class="search_input">
+            <input matInput type="search" placeholder="Search items..." (keyup.enter)="onEnter()">
+        </mat-form-field>
+      </span>
       <!-- Shopping cart -->
       <span *ngIf="!(isHandset$ | async)">
         <a href="/shop-cart">
@@ -54,13 +61,6 @@
           <a href="/login">
               <fa-icon [icon]="faUserCircle" size="lg"></fa-icon>
           </a>
-      </span>
-      <!-- Search field -->
-      <span>
-        <fa-icon [icon]="faSearch"></fa-icon>
-        <mat-form-field class="search_input">
-            <input matInput type="search" placeholder="Search items..." (keyup.enter)="onEnter()">
-        </mat-form-field>
       </span>
     </mat-toolbar>
     <!-- Add Content Here -->
