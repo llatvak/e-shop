@@ -4,9 +4,21 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <fa-icon [icon]="faShoppingCart" size="lg"></fa-icon>
-      <a mat-list-item href="/shop-cart">Shopping Cart</a>
-      <a mat-list-item href="/login">Login</a>
+      <!-- Shoppin cart -->
+      <span>
+        <a mat-list-item href="/shop-cart">
+             Shopping cart
+            <fa-icon [icon]="faShoppingCart" size="lg"></fa-icon>
+            {{shopCartItemCount}}
+        </a>
+      </span>
+      <!-- User login -->
+      <span>
+        <a mat-list-item href="/login">
+            Login
+            <fa-icon [icon]="faUserCircle" size="lg"></fa-icon>
+        </a>
+      </span>
       <a mat-list-item href="#">Categories</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -20,7 +32,15 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Eshop</span>
+      <span>FlotsamShop</span>
+      <!-- This fills the remaining space of the current row -->
+      <span class="fill-space"></span>
+      <span>
+        <fa-icon [icon]="faSearch"></fa-icon>
+        <mat-form-field class="search_input">
+            <input matInput type="search" placeholder="Search items..." (keyup.enter)="onEnter()">
+        </mat-form-field>
+      </span>
     </mat-toolbar>
     <!-- Add Content Here -->
   </mat-sidenav-content>

@@ -15,3 +15,13 @@
   top: 0;
   z-index: 1;
 }
+
+.search_input {
+  width: 150px;
+}
+
+.fill-space {
+  /* This fills the remaining space, by using flexbox. 
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}

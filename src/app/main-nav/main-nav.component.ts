@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { faShoppingCart, faUserCircle, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-nav',
@@ -13,6 +14,7 @@ export class MainNavComponent {
   faShoppingCart = faShoppingCart;
   faUserCircle = faUserCircle;
   faSearch = faSearch;
+  shopCartItemCount = 0;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -20,6 +22,9 @@ export class MainNavComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
-
+  constructor(private breakpointObserver: BreakpointObserver, private router: Router) {}
+  
+  onEnter(): void {
+    this.router.navigate(['/search-result']);
+  }
 }
