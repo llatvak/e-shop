@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'shop-cart', component: ShopCartComponent },
   { path: 'search-result', component: SearchResultComponent },
-  { path: '**', component: ShopItemComponent}
+  { path: '**', redirectTo: '', component: ShopItemComponent}
 ];
 
 @NgModule({
