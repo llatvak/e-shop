@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ShopItemComponent } from '../shop-item/shop-item.component';
 
 @Component({
   selector: 'app-featured-items',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./featured-items.component.css']
 })
 export class FeaturedItemsComponent implements OnInit {
+
+  featuredShopItems: ShopItemComponent;
 
   constructor() { }
 
