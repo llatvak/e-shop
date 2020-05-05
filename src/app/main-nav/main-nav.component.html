@@ -1,0 +1,68 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <!-- Shoppin cart -->
+      <span>
+        <a mat-list-item href="/shop-cart">
+             Shopping cart
+            <fa-icon [icon]="faShoppingCart" size="lg"></fa-icon>
+            {{shopCartItemCount}}
+        </a>
+      </span>
+      <!-- User login -->
+      <span>
+        <a mat-list-item href="/login">
+            Login
+            <fa-icon [icon]="faUserCircle" size="lg"></fa-icon>
+        </a>
+      </span>
+      <a mat-list-item href="#">Categories</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="(isHandset$ | async)">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="home">
+        <!-- Icon from <a href="https://icons8.com/icon/80319/home">Home icon by Icons8</a> -->
+        <!-- Page icon and title and navigation to home page -->
+        <a href="/">
+            <img src="https://img.icons8.com/flat_round/32/000000/home--v1.png"/>
+        </a>
+      </span>
+      <span *ngIf="!(isHandset$ | async)"><a href="/">FlotsamShop</a></span>
+      <!-- This fills the remaining space of the current row -->
+      <span class="fill-space"></span>
+      <!-- Search field -->
+      <span>
+        <fa-icon [icon]="faSearch"></fa-icon>
+        <mat-form-field class="search_input">
+            <input matInput type="search" placeholder="Search items..." (keyup.enter)="onEnter()">
+        </mat-form-field>
+      </span>
+      <!-- Shopping cart -->
+      <span *ngIf="!(isHandset$ | async)">
+        <a href="/shop-cart">
+            <fa-icon [icon]="faShoppingCart" size="lg"></fa-icon>
+            {{shopCartItemCount}}
+        </a>
+      </span>
+      <!-- User login -->
+      <span *ngIf="!(isHandset$ | async)">
+          <a href="/login">
+              <fa-icon [icon]="faUserCircle" size="lg"></fa-icon>
+          </a>
+      </span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

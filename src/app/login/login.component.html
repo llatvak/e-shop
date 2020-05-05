@@ -1,0 +1,30 @@
+<div class="login-container">
+  <!-- Login form -->
+  <div class="form-container">
+    <form [formGroup]="loginForm" (submit)="submit()" class="login-form">
+        <legend><h2>Log in or Sign up</h2></legend>
+        <!-- E-mail form field -->
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>E-mail:</mat-label>
+          <input matInput formControlName="email" placeholder="example@gmail.com" required>
+          <mat-error *ngIf="loginForm.controls.email.touched && loginForm.controls.email.invalid">
+            <span *ngIf="loginForm.controls.email.errors.required">This field is mandatory.</span>
+            <span *ngIf="loginForm.controls.email.errors.pattern">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        
+        <!-- Password form field -->
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Password:</mat-label>
+          <input matInput formControlName="password" type="password" placeholder="Password..." required>
+          <mat-error *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
+            <span *ngIf="loginForm.controls.password.errors.required">This field is mandatory.</span>
+          </mat-error>
+        </mat-form-field>
+        
+        <!-- Form controls -->
+        <button type="submit" mat-raised-button color="primary"><span>Log In</span></button>
+        <a mat-raised-button href="/login">Sign up</a>
+    </form>
+  </div>
+</div>
