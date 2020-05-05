@@ -1,5 +1,11 @@
+.login-container {
+    text-align: center;
+}
+
 .form-container {
-    display: flex; justify-content:center; align-items:center;
+    width: 400px;
+    margin: 0px auto;
+    margin-top: 200px;
 }
 
 .hidden {
@@ -7,15 +13,9 @@
 }
 
 .form-field {
-    width: 75%;
-    max-width: 250px;
+    display: block;
 }
 
-.login-form {
-    padding: 15px;
-}
-
-button {
-    color: #7b1fa2;
-    margin: 10px;
+a, button {
+    margin-right: 30px;
 }
