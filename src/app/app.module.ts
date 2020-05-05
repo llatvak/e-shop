@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { MaterialModule } from './material.module';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     SearchResultComponent,
     LoginComponent,
-    MainNavComponent
+    MainNavComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,

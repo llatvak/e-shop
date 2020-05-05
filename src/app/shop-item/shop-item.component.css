@@ -3,6 +3,7 @@ a:hover {
 }
 
 .product-card {
+    margin: 20px;
     max-width: 300px;
     text-align: center;
 }
