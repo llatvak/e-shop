@@ -44,3 +44,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Material
+bower-material/
+code.material.angularjs.org/
+.nvmrc
+*.log
