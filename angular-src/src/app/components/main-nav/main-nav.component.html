@@ -6,7 +6,7 @@
     <mat-nav-list>
       <!-- Shoppin cart -->
       <span>
-        <a mat-list-item href="/shop-cart">
+        <a mat-list-item [routerLink]="['/shop-cart']">
              Shopping cart
             <fa-icon [icon]="faShoppingCart" size="lg"></fa-icon>
             {{shopCartItemCount}}
@@ -14,12 +14,12 @@
       </span>
       <!-- User login -->
       <span>
-        <a mat-list-item href="/login">
+        <a mat-list-item [routerLink]="['/login']">
             Login
             <fa-icon [icon]="faUserCircle" size="lg"></fa-icon>
         </a>
       </span>
-      <a mat-list-item href="#">Categories</a>
+      <a mat-list-item [routerLink]="['/']">Categories</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -35,11 +35,11 @@
       <span class="home">
         <!-- Icon from <a href="https://icons8.com/icon/80319/home">Home icon by Icons8</a> -->
         <!-- Page icon and title and navigation to home page -->
-        <a href="/">
+        <a [routerLink]="['/']">
             <img src="https://img.icons8.com/flat_round/32/000000/home--v1.png"/>
         </a>
       </span>
-      <span *ngIf="!(isHandset$ | async)"><a href="/">FlotsamShop</a></span>
+      <span *ngIf="!(isHandset$ | async)"><a [routerLink]="['/']">FlotsamShop</a></span>
       <!-- This fills the remaining space of the current row -->
       <span class="fill-space"></span>
       <!-- Search field -->
@@ -51,14 +51,14 @@
       </span>
       <!-- Shopping cart -->
       <span *ngIf="!(isHandset$ | async)">
-        <a href="/shop-cart">
+        <a [routerLink]="['/shop-cart']">
             <fa-icon [icon]="faShoppingCart" size="lg"></fa-icon>
             {{shopCartItemCount}}
         </a>
       </span>
       <!-- User login -->
       <span *ngIf="!(isHandset$ | async)">
-          <a href="/login">
+          <a [routerLink]="['/login']">
               <fa-icon [icon]="faUserCircle" size="lg"></fa-icon>
           </a>
       </span>
