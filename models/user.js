@@ -40,7 +40,7 @@ module.exports.addUser = function(newUser, callback) {
 
 // Compare password to existing ones
 module.exports.comparePassword = function(userPassword, hash, callback) {
-    bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
+    bcrypt.compare(userPassword, hash, (err, isMatch) => {
         if(err) throw err;
         callback(null, isMatch);
     });
