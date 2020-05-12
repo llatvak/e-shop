@@ -1,1 +1,29 @@
-<p>register works!</p>
+<div class="register-container">
+    <!-- Register form -->
+    <div class="form-container">
+      <form [formGroup]="registerForm" (submit)="submit()" class="register-form">
+          <legend><h2>Register</h2></legend>
+          <!-- E-mail form field -->
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>E-mail:</mat-label>
+            <input matInput formControlName="email" placeholder="example@gmail.com" required>
+            <mat-error *ngIf="registerForm.controls.email.touched && registerForm.controls.email.invalid">
+              <span *ngIf="registerForm.controls.email.errors.required">This field is mandatory.</span>
+              <span *ngIf="registerForm.controls.email.errors.pattern">This field is invalid.</span>
+            </mat-error>
+          </mat-form-field>
+          
+          <!-- Password form field -->
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Password:</mat-label>
+            <input matInput formControlName="password" type="password" placeholder="Password..." required>
+            <mat-error *ngIf="registerForm.controls.password.touched && registerForm.controls.password.invalid">
+              <span *ngIf="registerForm.controls.password.errors.required">This field is mandatory.</span>
+            </mat-error>
+          </mat-form-field>
+          
+          <!-- Form controls -->
+          <button type="submit" mat-raised-button color="primary"><span>Sign Up</span></button>
+      </form>
+    </div>
+</div>
