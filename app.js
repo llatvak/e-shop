@@ -18,7 +18,7 @@ app.use(cors());
 // Body Parser
 app.use(bodyParser.json());
 
-app.user('/users', users);
+app.use('/users', users);
 
 // Index route
 app.get('/', (req, res) => {
