@@ -39,9 +39,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.authService.registerUser(user).subscribe(data => {
         this.dataRegister = data;
         if (this.dataRegister.success) {
+          // Registration was ok redirect to login page -> save credentials
+          // to database
           console.log('onSuccess');
           this.router.navigate(['/login']);
         } else {
+          // Registration failed return redirect to same page
           console.log('onError');
           this.router.navigate(['/register']);
         }
