@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const config = require('./config/database');
 
 // Database connect
+// Object sent is to use new versions and disable error messages
 mongoose.connect(config.database, {useNewUrlParser: true, useUnifiedTopology: true});
 
 // Check database connection
@@ -34,6 +35,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Body Parser
 app.use(bodyParser.json());
+
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./config/passport')(passport);
 
 app.use('/users', users);
 
