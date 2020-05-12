@@ -17,6 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -38,9 +40,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     BrowserAnimationsModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
