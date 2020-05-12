@@ -11,10 +11,12 @@ import { ShopItemComponent } from './components/shop-item/shop-item.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { LoginComponent } from './components/login/login.component';
-import { MaterialModule } from './material.module';
+import { MaterialModule } from './modules/material.module';
 import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { RegisterComponent } from './components/register/register.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ProductDetailsComponent } from './components/product-details/product-de
     SearchResultComponent,
     LoginComponent,
     MainNavComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    RegisterComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
