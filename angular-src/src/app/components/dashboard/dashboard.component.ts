@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    // Fetch user data when logged in
     this.authService.getProfile().subscribe(profile => {
       this.profileResult = profile;
       this.user = this.profileResult.user;

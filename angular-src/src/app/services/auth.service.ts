@@ -45,6 +45,8 @@ export class AuthService {
   // Get profile data for dashboard
   getProfile() {
     let headers: HttpHeaders = new HttpHeaders();
+    // Load the JWT-token and add it to headers for backend to authorize
+    // and give access to guarded path
     this.loadToken();
     headers = headers.append('Authorization', this.authToken);
     headers = headers.append('Content-Type', 'application/json');
