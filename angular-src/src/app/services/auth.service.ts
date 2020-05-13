@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpHeaderResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -58,5 +59,15 @@ export class AuthService {
   loadToken() {
     const token  = localStorage.getItem('id_token');
     this.authToken = token;
+  }
+
+  // Check if token exists and is not expired
+  loggedIn() {
+    if (localStorage.getItem('id_token') === undefined) {
+      return false;
+    } else {
+      const helper = new JwtHelperService();
+      return !helper.isTokenExpired(localStorage.getItem('id_token'));
+    }
   }
 }

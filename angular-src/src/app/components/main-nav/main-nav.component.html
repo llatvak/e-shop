@@ -57,19 +57,19 @@
         </a>
       </span>
       <!-- Dashboard -->
-      <span *ngIf="!(isHandset$ | async)">
+      <span *ngIf="!(isHandset$ | async) && authService.loggedIn()">
         <a [routerLink]="['/dashboard']">
             Dashboard
         </a>
       </span>
       <!-- Profile -->
-      <span *ngIf="!(isHandset$ | async)">
+      <span *ngIf="!(isHandset$ | async) && authService.loggedIn()">
         <a [routerLink]="['/profile']">
-            Profile
+          <fa-icon [icon]="faUserCircle" size="lg"></fa-icon>
         </a>
       </span>
       <!-- User login -->
-      <span *ngIf="!(isHandset$ | async)">
+      <span *ngIf="!(isHandset$ | async) && !authService.loggedIn()">
           <a [routerLink]="['/login']">
               <fa-icon [icon]="faUserCircle" size="lg"></fa-icon>
           </a>
