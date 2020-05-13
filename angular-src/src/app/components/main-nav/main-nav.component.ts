@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { faShoppingCart, faUserCircle, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-main-nav',
@@ -22,7 +23,11 @@ export class MainNavComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private router: Router) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private router: Router,
+    public authService: AuthService
+  ) {}
 
   onEnter(): void {
     this.router.navigate(['/search-result']);
