@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,7 +16,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -25,6 +24,11 @@ export class LoginComponent implements OnInit, OnDestroy {
       email: [null, [Validators.required, Validators.pattern(this.emailRegx)]],
       password: [null, Validators.required]
     });
+    console.log(this.router.url);
+    // Redirect to dashboard if user already logged in
+    if (this.router.url === '/login' && this.authService.loggedIn()) {
+        this.router.navigate(['/dashboard']);
+    }
   }
 
   submit() {
