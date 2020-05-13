@@ -20,6 +20,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     MaterialModule,
     HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
