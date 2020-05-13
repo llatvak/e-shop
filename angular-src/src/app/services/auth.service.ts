@@ -13,15 +13,15 @@ export class AuthService {
 
   // Register user to database
   registerUser(user) {
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/users/register', user, {headers});
   }
 
   // Authenticate user and fetch token if successfull
   autheticateUser(user) {
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/users/authenticate', user, {headers});
   }
 
