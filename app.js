@@ -25,7 +25,7 @@ const app = express();
 const users = require('./routes/users');
 
 // Port number
-const port = 3000;
+const port = (process.env.NODE_ENV ? process.env.PORT || 8080 : 3000);
 
 // CORS
 app.use(cors());
@@ -51,7 +51,7 @@ app.get('/', (req, res) => {
 
 // Redirect any other route to index.html
 app.get('*', (req, res) => {
-    res.sendFile(path.join(_dirname, 'public/index.html'))
+    res.sendFile(path.join(__dirname, 'public/index.html'))
 });
 
 // Server start
