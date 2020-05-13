@@ -7,6 +7,7 @@ import { ShopItemComponent } from './components/shop-item/shop-item.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'product-details', component: ProductDetailsComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: '**', redirectTo: '', component: ShopItemComponent}
 ];
 

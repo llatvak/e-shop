@@ -3,16 +3,28 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class ProfileComponent implements OnInit {
+
+  user: any = {};
+  profileResult: any = {};
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-
+    // Fetch user data when logged in
+    this.authService.getProfile().subscribe(profile => {
+        this.profileResult = profile;
+        this.user = this.profileResult.user;
+      },
+      err => {
+        console.log(err);
+        return false;
+      }
+    );
   }
 
   // On log out clear storage and navigate to login page

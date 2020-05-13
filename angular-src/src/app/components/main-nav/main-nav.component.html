@@ -56,6 +56,18 @@
             {{shopCartItemCount}}
         </a>
       </span>
+      <!-- Dashboard -->
+      <span *ngIf="!(isHandset$ | async)">
+        <a [routerLink]="['/dashboard']">
+            Dashboard
+        </a>
+      </span>
+      <!-- Profile -->
+      <span *ngIf="!(isHandset$ | async)">
+        <a [routerLink]="['/profile']">
+            Profile
+        </a>
+      </span>
       <!-- User login -->
       <span *ngIf="!(isHandset$ | async)">
           <a [routerLink]="['/login']">
