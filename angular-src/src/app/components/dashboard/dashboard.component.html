@@ -1,4 +1,11 @@
 <p>dashboard works!</p>
 <div class="dashboard">
+    <div *ngIf="user">
+        <h2>Your profile:</h2>
+        <h2 class="page-header">{{user.name}}</h2>
+        <ul class="list-group">
+            <li class="list-group-item">Email: {{user.email}}</li>
+        </ul>
+    </div>
     <button mat-raised-button color="warn" (click)="onLogoutClick()">Log Out</button>
 </div>

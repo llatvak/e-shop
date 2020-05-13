@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpHeaderResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -42,4 +42,19 @@ export class AuthService {
     localStorage.clear();
   }
 
+  // Get profile data for dashboard
+  getProfile() {
+    let headers: HttpHeaders = new HttpHeaders();
+    this.loadToken();
+    headers = headers.append('Authorization', this.authToken);
+    headers = headers.append('Content-Type', 'application/json');
+    console.log(headers.getAll('Authorization'));
+    return this.http.get('http://localhost:3000/users/profile', {headers});
+  }
+
+  // Fetch token form local storage
+  loadToken() {
+    const token  = localStorage.getItem('id_token');
+    this.authToken = token;
+  }
 }

@@ -9,9 +9,21 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
+  user: any = {};
+  profileResult: any = {};
+
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    this.authService.getProfile().subscribe(profile => {
+      this.profileResult = profile;
+      this.user = this.profileResult.user;
+    },
+    err => {
+      console.log(err);
+      return false;
+    }
+    );
   }
 
   // On log out clear storage and navigate to login page
