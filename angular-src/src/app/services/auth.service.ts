@@ -25,6 +25,7 @@ export class AuthService {
     return this.http.post('http://localhost:3000/users/authenticate', user, {headers});
   }
 
+  // Store user and token
   storeUserData(token, user) {
     // Angular-JWT look for id_token key when validating token
     localStorage.setItem('id_token', token);
@@ -33,4 +34,12 @@ export class AuthService {
     this.authToken = token;
     this.user = user;
   }
+
+  // Reset data on logout
+  logout() {
+    this.authToken = null;
+    this.user = null;
+    localStorage.clear();
+  }
+
 }
