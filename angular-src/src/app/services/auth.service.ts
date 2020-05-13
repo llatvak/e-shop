@@ -18,14 +18,14 @@ export class AuthService {
   registerUser(user) {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
-    return this.http.post(`${this.baseUrl}users/register`, user, {headers});
+    return this.http.post('users/register', user, {headers});
   }
 
   // Authenticate user and fetch token if successfull
   autheticateUser(user) {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
-    return this.http.post(`${this.baseUrl}users/authenticate`, user, {headers});
+    return this.http.post('users/authenticate', user, {headers});
   }
 
   // Store user and token
@@ -54,7 +54,7 @@ export class AuthService {
     headers = headers.append('Authorization', this.authToken);
     headers = headers.append('Content-Type', 'application/json');
     console.log(headers.getAll('Authorization'));
-    return this.http.get(`${this.baseUrl}users/profile`, {headers});
+    return this.http.get('users/profile', {headers});
   }
 
   // Fetch token form local storage
