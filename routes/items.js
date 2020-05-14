@@ -4,11 +4,15 @@ const ItemSchema = require('../models/item');
 const config = require('../config/database')
 const Item = require('../models/item');
 
-// Add one item
-
-// Get one item
-
-// Get all users
+// Get all items
+router.get(('/items'), function(req, res) {
+    Item.getItems((err, items) => {
+        if(err) {
+            throw err;
+        }
+        res.json(items);
+    });
+});
 
 // Update one item
 

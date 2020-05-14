@@ -44,7 +44,7 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 app.use('/users', users);
-app.use('/items', items);
+app.use('/api', items);
 
 // Index route
 app.get('/', (req, res) => {
@@ -52,9 +52,10 @@ app.get('/', (req, res) => {
 });
 
 // Redirect any other route to index.html
-app.get('*', (req, res) => {
+/*app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/index.html'))
 });
+*/
 
 // Server start
 app.listen(port, () => {
