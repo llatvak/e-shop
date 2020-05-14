@@ -14,6 +14,16 @@ router.get(('/items'), function(req, res) {
     });
 });
 
+// Get one item
+router.get('/items/:_id', (req, res) => {
+    Item.getItemById(req.params._id, (err, item) => {
+        if(err) {
+            throw err;
+        }
+        res.json(item);
+    });
+});
+
 // Update one item
 
 // Delete one item
