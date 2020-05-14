@@ -46,6 +46,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         } else {
           // Registration failed return redirect to same page
           console.log('onError');
+          alert('Email already exists');
           this.router.navigate(['/register']);
         }
       }
