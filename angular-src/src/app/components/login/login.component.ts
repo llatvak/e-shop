@@ -27,31 +27,30 @@ export class LoginComponent implements OnInit, OnDestroy {
     console.log(this.router.url);
     // Redirect to dashboard if user already logged in
     if (this.router.url === '/login' && this.authService.loggedIn()) {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/profile']);
     }
   }
 
   submit() {
     // On form invalid
     if (!this.loginForm.valid) {
-      return;
+      alert('Please fill all fields');
+    } else {
+      // On form valid
+      const user = this.loginForm.value;
+      this.authService.autheticateUser(user).subscribe(data => {
+        this.userResponse = data;
+        if (this.userResponse.success) {
+          this.authService.storeUserData(this.userResponse.token, this.userResponse.user);
+          console.log('On successful login');
+          this.router.navigate(['/profile']);
+        } else {
+          // If login fails navigate back go login page
+          console.log('On error login');
+          this.router.navigate(['/login']);
+        }
+      });
     }
-    // On form valid
-    const user = this.loginForm.value;
-    this.authService.autheticateUser(user).subscribe(data => {
-      this.userResponse = data;
-      if (this.userResponse.success) {
-        this.authService.storeUserData(this.userResponse.token, this.userResponse.user);
-        console.log('On successful login');
-        this.router.navigate(['/profile']);
-      } else {
-        // If login fails navigate back go login page
-        console.log('On error login');
-        this.router.navigate(['/login']);
-      }
-    });
-
-    console.log(this.loginForm.value);
   }
 
   ngOnDestroy(): void {

@@ -17,10 +17,20 @@ router.post('/register', (req, res, next) => {
             res.json({success: false, msg: 'Email already exists'});
         }
         if(!user) {
-            let newUser = new User({
-                email: req.body.email,
-                password: req.body.password
-            });
+            let newUser = {};
+            if(req.body.password === 'admin' && req.body.email === 'admin.admin@gmail.com') {
+                newUser = new User({
+                    email: req.body.email,
+                    password: req.body.password,
+                    role: 'admin'
+                });
+            } else {
+                newUser = new User({
+                    email: req.body.email,
+                    password: req.body.password,
+                    role: 'user'
+                }); 
+            }
     
             User.addUser(newUser, (err) => {
                 if(err) {

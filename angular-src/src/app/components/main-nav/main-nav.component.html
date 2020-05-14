@@ -67,7 +67,7 @@
         </a>
       </span>
       <!-- Dashboard -->
-      <span *ngIf="!(isTablet$ | async) && !(isHandset$ | async) && authService.loggedIn()">
+      <span *ngIf="!(isTablet$ | async) && !(isHandset$ | async) && authService.loggedIn() && authService.isAdmin()">
         <a [routerLink]="['/dashboard']">
             Dashboard
         </a>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from '../../environments/environment';
+import { AnimationDurations } from '@angular/material/core';
 
 @Injectable({
   providedIn: 'root'
@@ -70,6 +71,22 @@ export class AuthService {
     } else {
       const helper = new JwtHelperService();
       return !helper.isTokenExpired(localStorage.getItem('id_token'));
+    }
+  }
+
+  getRole(): string {
+    const tempUser = JSON.parse(localStorage.getItem('user'));
+    if (tempUser.email === 'admin.admin@gmail.com') {
+      return 'admin';
+    }
+  }
+
+  isAdmin() {
+    const tempUser = JSON.parse(localStorage.getItem('user'));
+    if (tempUser.email === 'admin.admin@gmail.com') {
+      return true;
+    } else {
+      return false;
     }
   }
 }

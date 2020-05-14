@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'product-details', component: ProductDetailsComponent },
   { path: 'product-details', component: ProductDetailsComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], data: {roles: 'admin'}},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: '', component: ShopItemComponent}
 ];
