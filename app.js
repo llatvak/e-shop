@@ -44,7 +44,7 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 app.use('/users', users);
-app.use('/api', items);
+app.use('/api/items', items);
 
 // Index route
 app.get('/', (req, res) => {
