@@ -1,7 +1,7 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'">
+      [attr.role]="(isTablet$ | async) || (isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isTablet$ | async) || (isHandset$ | async)  ? 'over' : 'side'">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <!-- Shoppin cart -->
@@ -13,13 +13,23 @@
         </a>
       </span>
       <!-- User login -->
-      <span>
+      <span *ngIf="!authService.loggedIn()">
         <a mat-list-item [routerLink]="['/login']">
             Login
-            <fa-icon [icon]="faUserCircle" size="lg"></fa-icon>
         </a>
       </span>
-      <a mat-list-item [routerLink]="['/']">Categories</a>
+      <!-- Dashboard -->
+      <span *ngIf="authService.loggedIn()">
+        <a mat-list-item [routerLink]="['/dashboard']">
+            Dashboard
+        </a>
+      </span>
+      <!-- Profile -->
+      <span *ngIf="authService.loggedIn()">
+        <a mat-list-item [routerLink]="['/profile']">
+            Profile
+        </a>
+      </span>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -29,7 +39,7 @@
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
-        *ngIf="(isHandset$ | async)">
+        *ngIf="(isTablet$ | async) || (isHandset$ | async)">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span class="home">
@@ -39,7 +49,7 @@
             <img src="https://img.icons8.com/flat_round/32/000000/home--v1.png"/>
         </a>
       </span>
-      <span *ngIf="!(isHandset$ | async)"><a [routerLink]="['/']">FlotsamShop</a></span>
+      <span *ngIf="!(isTablet$ | async) && !(isHandset$ | async)"><a [routerLink]="['/']">FlotsamShop</a></span>
       <!-- This fills the remaining space of the current row -->
       <span class="fill-space"></span>
       <!-- Search field -->
@@ -50,26 +60,26 @@
         </mat-form-field>
       </span>
       <!-- Shopping cart -->
-      <span *ngIf="!(isHandset$ | async)">
+      <span *ngIf="!(isTablet$ | async) && !(isHandset$ | async)">
         <a [routerLink]="['/shop-cart']">
             <fa-icon [icon]="faShoppingCart" size="lg"></fa-icon>
             {{shopCartItemCount}}
         </a>
       </span>
       <!-- Dashboard -->
-      <span *ngIf="!(isHandset$ | async) && authService.loggedIn()">
+      <span *ngIf="!(isTablet$ | async) && !(isHandset$ | async) && authService.loggedIn()">
         <a [routerLink]="['/dashboard']">
             Dashboard
         </a>
       </span>
       <!-- Profile -->
-      <span *ngIf="!(isHandset$ | async) && authService.loggedIn()">
+      <span *ngIf="!(isTablet$ | async) && !(isHandset$ | async) && authService.loggedIn()">
         <a [routerLink]="['/profile']">
           <fa-icon [icon]="faUserCircle" size="lg"></fa-icon>
         </a>
       </span>
       <!-- User login -->
-      <span *ngIf="!(isHandset$ | async) && !authService.loggedIn()">
+      <span *ngIf="!(isTablet$ | async) && !(isHandset$ | async) && !authService.loggedIn()">
           <a [routerLink]="['/login']">
               <fa-icon [icon]="faUserCircle" size="lg"></fa-icon>
           </a>
