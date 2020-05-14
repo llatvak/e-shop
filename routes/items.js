@@ -45,7 +45,7 @@ router.post('/', async (req, res) => {
 });
 
 // Update one item
-/*router.put('/:_id', (req, res) => {
+router.put('/:_id', (req, res) => {
     let updatedItem = {};
     updatedItem = new Item({
         name: req.body.name,
@@ -59,15 +59,15 @@ router.post('/', async (req, res) => {
         }
         res.json(item);
     });
-});*/
+});
 
 // Delete one item
 router.delete('/:_id', async (req, res) => {
     try {
         const removedItem =  await Item.remove({_id: req.params._id});
-        res.json(removedItem);
+        res.status(200).json(removedItem);
     } catch(err) {
-        res.json({message: err});
+        res.status(404).json({message: err});
     }
 });
 
