@@ -8,13 +8,9 @@ const Item = require('../models/item');
 router.get(('/'), async (req, res) => {
     try {
         const items = await Item.find();
-        if(items === null) {
-            res.status(404).json({msg: 'Items not found'});
-        } else {
-            res.status(200).json(items); 
-        }
+        res.status(200).json(items); 
     } catch(err) {
-        res.json({msg: err});
+        res.status(404).json({msg: err});
     }
 });
 
@@ -22,7 +18,11 @@ router.get(('/'), async (req, res) => {
 router.get('/:_id', async (req, res) => {
     try {
         const item = await Item.findById(req.params._id);
-        res.status(200).json({message: 'Item not found'});
+        if(item === null) {
+            res.status(404).json({msg: 'Item not found'});
+        } else {
+            res.status(200).json(item); 
+        }
     } catch(err) {
         res.json({msg: err});
     }
@@ -45,20 +45,21 @@ router.post('/', async (req, res) => {
 });
 
 // Update one item
-router.put('/:_id', (req, res) => {
-    let updatedItem = {};
-    updatedItem = new Item({
-        name: req.body.name,
-        price: req.body.price,
-        category: req.body.category,
-        imageUrl: req.body.imageUrl
-    });
-    Item.updateItem(updatedItem, (err, item) => {
-        if(err) {
-            throw err;
-        }
-        res.json(item);
-    });
+router.patch('/:_id', async(req, res) => {
+    try {
+        const updatedItem = await Item.updateOne({_id: req.params._id},
+        {
+            $set: {
+                name: req.body.name,
+                price: req.body.price,
+                category: req.body.category,
+                imageUrl: req.body.imageUrl
+            }
+        });
+        res.status(200).json(updatedItem);
+    } catch(err) {
+        res.status(400).json({message: err});
+    }
 });
 
 // Delete one item
