@@ -9,12 +9,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  sub: any;
-  page: any;
+  itemDetails: Item;
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log(history.state.data);
+    // Get data from detail button click
+    this.itemDetails = history.state.data;
   }
 }
