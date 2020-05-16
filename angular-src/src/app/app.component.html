@@ -1,4 +1,9 @@
-<app-main-nav></app-main-nav>
-<div class="container">
-  <router-outlet></router-outlet>
+<div fxFlexFill fxLayout="column">
+  <app-main-nav></app-main-nav>
+  <div fxLayout="column" fxFlex>
+    <div fxFlex style="margin: 1%">
+      <router-outlet></router-outlet>
+    </div>
+    <app-footer></app-footer>
+  </div>
 </div>
