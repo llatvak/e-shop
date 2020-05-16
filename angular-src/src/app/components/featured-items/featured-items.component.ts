@@ -10,7 +10,8 @@ import { Item } from '../../item';
 })
 export class FeaturedItemsComponent implements OnInit {
 
-  private featuredShopItems: Item[] = [];
+  featuredShopItems: Item[];
+  shopItem: Item;
 
   constructor(private itemService: ItemService) { }
 

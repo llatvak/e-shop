@@ -1,1 +1,4 @@
 <app-shop-item></app-shop-item>
+<div *ngFor="let shopItem of featuredShopItems; let i=index;">
+    <app-shop-item [item]="shopItem"></app-shop-item>
+</div>
