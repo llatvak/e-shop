@@ -22,6 +22,7 @@ import { AuthService } from './services/auth.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuard } from './guards/auth.guard';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ItemService } from './services/item.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HttpClientModule,
     FlexLayoutModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, ItemService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

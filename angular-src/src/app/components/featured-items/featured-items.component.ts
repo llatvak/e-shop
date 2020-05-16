@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShopItemComponent } from '../shop-item/shop-item.component';
+import { ItemService } from '../../services/item.service';
+import { Item } from '../../item';
 
 @Component({
   selector: 'app-featured-items',
@@ -8,11 +10,16 @@ import { ShopItemComponent } from '../shop-item/shop-item.component';
 })
 export class FeaturedItemsComponent implements OnInit {
 
-  featuredShopItems: ShopItemComponent;
+  private featuredShopItems: Item[] = [];
 
-  constructor() { }
+  constructor(private itemService: ItemService) { }
 
   ngOnInit(): void {
+    // Fetch all items and assign to local variable
+    this.itemService.getItems()
+      .subscribe(data => {
+        this.featuredShopItems = data;
+        console.log(this.featuredShopItems);
+    });
   }
-
 }
