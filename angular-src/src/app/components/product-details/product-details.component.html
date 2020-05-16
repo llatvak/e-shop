@@ -1,1 +1,30 @@
-<p>product-details works!</p>
+<div class="detail-container">
+    <img src={{item.imageUrl}} width="500" height="500">
+    <p>{{item.name}}</p>
+    <p>{{item.price}}</p>
+    <div class="form-container">
+        <form [formGroup]="productDetailForm" class="detail-form">
+            <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Choose size</mat-label>
+                <mat-select formControlName="size" #shoeSize value="40" (selectionChange)="triggerResize()">
+                    <mat-option value="30">30</mat-option>
+                    <mat-option value="31">31</mat-option>
+                    <mat-option value="32">32</mat-option>
+                    <mat-option value="33">33</mat-option>
+                    <mat-option value="34">34</mat-option>
+                    <mat-option value="35">35</mat-option>
+                    <mat-option value="36">36</mat-option>
+                    <mat-option value="37">37</mat-option>
+                    <mat-option value="38">38</mat-option>
+                    <mat-option value="39">39</mat-option>
+                    <mat-option value="40">40</mat-option>
+                    <mat-option value="41">41</mat-option>
+                    <mat-option value="42">42</mat-option>
+                    <mat-option value="43">43</mat-option>
+                    <mat-option value="44">44</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button mat-raised-button color="primary">Add to shopping cart</button>
+        </form>
+    </div>
+</div>
