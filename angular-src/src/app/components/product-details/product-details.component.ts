@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
 import { Item } from 'src/app/item';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {take} from 'rxjs/operators';
 import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -15,12 +15,21 @@ export class ProductDetailsComponent implements OnInit {
   item: Item;
   productDetailForm: FormGroup;
 
-  constructor(private route: ActivatedRoute, private ngZone: NgZone, private formBuilder: FormBuilder) { }
+  constructor(
+    private route: ActivatedRoute,
+    private ngZone: NgZone,
+    private formBuilder: FormBuilder,
+    private router: Router
+    ) { }
 
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
 
   ngOnInit(): void {
     // Get data from detail button click
+    if (history.state.data === undefined) {
+      this.item = history.state.data;
+      this.router.navigate(['/']);
+    }
     this.item = history.state.data;
     this.productDetailForm = this.formBuilder.group({
       size: [null, [Validators.required]]

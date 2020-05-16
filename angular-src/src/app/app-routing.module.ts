@@ -16,7 +16,6 @@ const routes: Routes = [
   { path: 'shop-cart', component: ShopCartComponent },
   { path: 'search-result', component: SearchResultComponent },
   { path: 'product-details', component: ProductDetailsComponent },
-  { path: 'product-details', component: ProductDetailsComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], data: {roles: 'admin'}},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
