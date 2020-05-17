@@ -24,4 +24,11 @@ export class ItemService {
     console.log(url);
     return this.http.get<Item>(url);
   }
+
+  // Delete one item
+  deleteItem(id: string): Observable<Item> {
+    const url = this.baseUrl + `items/${id}`;
+    console.log(url);
+    return this.http.delete<Item>(url);
+  }
 }

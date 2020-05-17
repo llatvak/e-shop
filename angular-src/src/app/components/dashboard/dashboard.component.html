@@ -38,7 +38,7 @@
                 Delete
               </th>
               <td mat-cell *matCellDef="let row">
-                <a href (click)="deleteClicked()" class="icon">
+                <a href (click)="deleteClicked(row._id)" class="icon">
                   <fa-icon [icon]="faTrash" size="lg"></fa-icon>
                 </a>
               </td>

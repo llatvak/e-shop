@@ -8,6 +8,7 @@ import {MatSort} from '@angular/material/sort';
 import {merge, Observable, of as observableOf} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-dashboard',
@@ -69,8 +70,13 @@ export class DashboardComponent implements OnInit, AfterViewInit  {
     return false;
   }
 
-  deleteClicked(): void {
-    console.log('Delete item');
+  deleteClicked(id: string): boolean {
+    this.itemService.deleteItem(id).subscribe(data => {
+      this.itemService.getItems().subscribe(data2 => {
+        this.data = new MatTableDataSource(data2);
+      });
+    });
+    return false;
   }
 
 }

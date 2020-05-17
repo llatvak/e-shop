@@ -65,7 +65,7 @@ router.patch('/:_id', async(req, res) => {
 // Delete one item
 router.delete('/:_id', async (req, res) => {
     try {
-        const removedItem =  await Item.remove({_id: req.params._id});
+        const removedItem =  await Item.deleteOne({_id: req.params._id});
         res.status(200).json(removedItem);
     } catch(err) {
         res.status(404).json({message: err});
