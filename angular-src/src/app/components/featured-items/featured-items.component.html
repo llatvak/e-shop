@@ -1,4 +1,8 @@
 <!-- Display fetched items from database to a specific limit -->
-<div *ngFor="let shopItem of featuredShopItems; let i=index;">
-    <app-shop-item *ngIf="i < 6" [item]="shopItem"></app-shop-item>
+<div fxLayout="row wrap" fxLayoutAlign="center center">
+    <div *ngFor="let shopItem of featuredShopItems; let i=index;"
+        [ngStyle.gt-md]="{'margin.px': 3}"
+        fxFlex.gt-md="0 0 calc(25% - 6px)">
+        <app-shop-item *ngIf="i < 8" [item]="shopItem"></app-shop-item>
+    </div>
 </div>
