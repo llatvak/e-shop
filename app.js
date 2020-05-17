@@ -43,7 +43,7 @@ app.use(passport.session());
 
 require('./config/passport')(passport);
 
-app.use('/users', users);
+app.use('/api/users', users);
 app.use('/api/items', items);
 
 // Index route

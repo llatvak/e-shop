@@ -10,3 +10,8 @@
 .form-field {
     display: block;
 }
+
+img {
+    width: 80%;
+    max-width: 500px;
+}
