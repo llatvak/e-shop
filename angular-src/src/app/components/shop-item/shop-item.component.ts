@@ -21,6 +21,6 @@ export class ShopItemComponent implements OnInit {
 
   detailsClicked(): void {
     // Route to details and add data
-    this.router.navigate(['/product-details'], {state: {data: this.item}});
+    this.router.navigate([`/product-details/${this.item._id}`], {state: {data: this.item}});
   }
 }
