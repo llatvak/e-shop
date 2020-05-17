@@ -37,7 +37,11 @@
               <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
                 Delete
               </th>
-              <td mat-cell *matCellDef="let row">{{row.created_at | date}}</td>
+              <td mat-cell *matCellDef="let row">
+                <a href (click)="deleteClicked()" class="icon">
+                  <fa-icon [icon]="faTrash" size="lg"></fa-icon>
+                </a>
+              </td>
             </ng-container>
       
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

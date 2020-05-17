@@ -7,6 +7,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {merge, Observable, of as observableOf} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,8 +16,9 @@ import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 })
 export class DashboardComponent implements OnInit, AfterViewInit  {
 
-  isLoadingResults = false;
+  isLoadingResults = true;
   isRateLimitReached = false;
+  faTrash = faTrash;
   resultsLength = 0;
   data: any = [];
   displayedColumns: string[] = ['id', 'name', 'price', 'category', 'delete'];
@@ -65,6 +67,10 @@ export class DashboardComponent implements OnInit, AfterViewInit  {
     console.log('On log out');
     this.router.navigate(['/login']);
     return false;
+  }
+
+  deleteClicked(): void {
+    console.log('Delete item');
   }
 
 }
