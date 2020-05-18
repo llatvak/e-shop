@@ -48,18 +48,22 @@
       </div>
     <button mat-raised-button color="warn" (click)="onLogoutClick()">Log Out</button>
     <div class="add-form-container">
+      <!-- Add item form -->
       <form [formGroup]="addForm" (submit)="submit()" class="item-form">
         <legend><h2>Add new item</h2></legend>
+        <!-- Name field -->
         <mat-form-field appearance="fill">
           <mat-label>Name</mat-label>
           <input matInput formControlName="name">
         </mat-form-field>
         <br>
+        <!-- Price field -->
         <mat-form-field appearance="fill">
-          <mat-label>Price</mat-label>
+          <mat-label>Price (€)</mat-label>
           <input matInput formControlName="price">
         </mat-form-field>
         <br>
+        <!-- Category field -->
         <mat-form-field appearance="fill">
           <mat-label>Category</mat-label>
           <mat-select formControlName="category">
@@ -67,11 +71,13 @@
           </mat-select>
         </mat-form-field>
         <br>
+        <!-- Image url field -->
         <mat-form-field appearance="fill">
           <mat-label>Image url</mat-label>
           <input matInput formControlName="imageUrl">
         </mat-form-field>
         <br>
+        <!-- Controls -->
         <button mat-raised-button color="primary">Add Item</button>
       </form>
     </div>
