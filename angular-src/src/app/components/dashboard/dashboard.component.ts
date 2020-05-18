@@ -30,12 +30,14 @@ export class DashboardComponent implements OnInit, AfterViewInit  {
   ) { }
 
   ngAfterViewInit() {
+    // Fetch all items to display in table
     this.itemService.getItems().subscribe((data) => {
       this.items = data;
       setTimeout(() => this.loadItems(), 500);
     });
   }
 
+  // Load items to table
   loadItems(): void {
     this.isLoadingResults = false;
     this.resultsLength = this.items.length;
@@ -54,12 +56,13 @@ export class DashboardComponent implements OnInit, AfterViewInit  {
     return false;
   }
 
+  // Delete item from database and filter deleted item from table
   deleteClicked(id: string, elm: Item): boolean {
-    // Delete item from database and filter deleted item from table
     this.itemService.deleteItem(id).subscribe(data => {
       this.itemService.getItems().subscribe((data2: Item[]) => {
         this.items = this.items.filter(i => i !== elm);
         this.resultsLength = this.items.length;
+        // Refresh data on table and paginator
         this.data = new MatTableDataSource<Item>(this.items);
         this.data.paginator = this.paginator;
       });

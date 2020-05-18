@@ -1,11 +1,11 @@
 <div class="dashboard">
     <h2>Welcome to dashboard!</h2>
-    <div class="example-container mat-elevation-z8">
-        <div class="example-loading-shade"
+    <div class="full-container mat-elevation-z8">
+        <div class="progress-loading-shade"
              *ngIf="isLoadingResults">
           <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
         </div>
-        <div class="example-table-container">
+        <div class="data-table-container">
           <table mat-table [dataSource]="data" class="example-table">
             <!-- Id Column -->
             <ng-container matColumnDef="id">
