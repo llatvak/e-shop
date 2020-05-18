@@ -1,12 +1,11 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { ItemService } from 'src/app/services/item.service';
 import { Item } from '../../item';
 import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {merge, Observable, of as observableOf} from 'rxjs';
-import {catchError, map, startWith, switchMap} from 'rxjs/operators';
+import {merge, of as observableOf} from 'rxjs';
+import {catchError, map, startWith} from 'rxjs/operators';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -18,48 +17,33 @@ import { MatTableDataSource } from '@angular/material/table';
 export class DashboardComponent implements OnInit, AfterViewInit  {
 
   isLoadingResults = true;
-  isRateLimitReached = false;
   faTrash = faTrash;
   resultsLength = 0;
-  data: any = [];
+  data2: Item[] = [];
+  data = new MatTableDataSource<Item>();
   displayedColumns: string[] = ['id', 'name', 'price', 'category', 'delete'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private  itemService: ItemService
+    private  itemService: ItemService,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngAfterViewInit() {
-    // If the user changes the sort order, reset back to the first page.
-    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
-
-    merge(this.sort.sortChange, this.paginator.page)
-      .pipe(
-        startWith({}),
-        map(data => {
-          // Flip flag to show that loading has finished.
-          this.isLoadingResults = false;
-          this.isRateLimitReached = false;
-          this.resultsLength = this.data.length;
-
-          return data;
-        }),
-        catchError(() => {
-          this.isLoadingResults = false;
-          this.isRateLimitReached = true;
-          return observableOf([]);
-        })
-      ).subscribe(data => this.data = data);
+    this.itemService.getItems().subscribe((data) => {
+      this.data2 = data;
+      this.isLoadingResults = false;
+      this.resultsLength = this.data2.length;
+      this.data.data = data as any;
+      this.data.paginator = this.paginator;
+    });
   }
 
   ngOnInit(): void {
-    this.itemService.getItems().subscribe(data => {
-      this.data = data;
-    });
+    this.data.paginator = this.paginator;
   }
 
   // On log out clear storage and navigate to login page
@@ -70,10 +54,12 @@ export class DashboardComponent implements OnInit, AfterViewInit  {
     return false;
   }
 
-  deleteClicked(id: string): boolean {
+  deleteClicked(id: string, elm: Item): boolean {
+    // Delete item from database and filter deleted item from table
     this.itemService.deleteItem(id).subscribe(data => {
-      this.itemService.getItems().subscribe(data2 => {
-        this.data = new MatTableDataSource(data2);
+      this.itemService.getItems().subscribe((data2: Item[]) => {
+        this.data2 = this.data2.filter(i => i !== elm);
+        this.resultsLength = this.data2.length;
       });
     });
     return false;

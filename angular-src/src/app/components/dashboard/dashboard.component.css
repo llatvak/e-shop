@@ -6,7 +6,7 @@
 
 .example-table-container {
   position: relative;
-  max-height: 400px;
+  max-height: 600px;
   overflow: auto;
 }
 
@@ -25,12 +25,6 @@ table {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.example-rate-limit-reached {
-  color: #980000;
-  max-width: 360px;
-  text-align: center;
 }
 
 /* Column Widths */
