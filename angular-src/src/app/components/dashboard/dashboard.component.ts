@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit, AfterViewInit  {
   isLoadingResults = true;
   faTrash = faTrash;
   resultsLength = 0;
-  data2: Item[] = [];
+  items: Item[] = [];
   data = new MatTableDataSource<Item>();
   displayedColumns: string[] = ['id', 'name', 'price', 'category', 'delete'];
 
@@ -29,21 +29,24 @@ export class DashboardComponent implements OnInit, AfterViewInit  {
     private authService: AuthService,
     private router: Router,
     private  itemService: ItemService,
-    private cdr: ChangeDetectorRef
   ) { }
 
   ngAfterViewInit() {
     this.itemService.getItems().subscribe((data) => {
-      this.data2 = data;
-      this.isLoadingResults = false;
-      this.resultsLength = this.data2.length;
-      this.data.data = data as any;
-      this.data.paginator = this.paginator;
+      this.items = data;
+      const loadItems = this.loadItems.bind(this);
+      setTimeout(loadItems, 500);
     });
   }
 
-  ngOnInit(): void {
+  loadItems(): void {
+    this.isLoadingResults = false;
+    this.resultsLength = this.items.length;
+    this.data.data = this.items as any;
     this.data.paginator = this.paginator;
+  }
+
+  ngOnInit(): void {
   }
 
   // On log out clear storage and navigate to login page
@@ -58,8 +61,8 @@ export class DashboardComponent implements OnInit, AfterViewInit  {
     // Delete item from database and filter deleted item from table
     this.itemService.deleteItem(id).subscribe(data => {
       this.itemService.getItems().subscribe((data2: Item[]) => {
-        this.data2 = this.data2.filter(i => i !== elm);
-        this.resultsLength = this.data2.length;
+        this.items = this.items.filter(i => i !== elm);
+        this.resultsLength = this.items.length;
       });
     });
     return false;
