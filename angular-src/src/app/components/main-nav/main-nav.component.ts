@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -11,11 +11,11 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './main-nav.component.html',
   styleUrls: ['./main-nav.component.css']
 })
-export class MainNavComponent {
+export class MainNavComponent implements OnInit {
   faShoppingCart = faShoppingCart;
   faUserCircle = faUserCircle;
   faSearch = faSearch;
-  shopCartItemCount = 0;
+  shopCartItemCount: number;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -34,6 +34,11 @@ export class MainNavComponent {
     private router: Router,
     public authService: AuthService
   ) {}
+
+  ngOnInit(): void {
+    const cartItems = localStorage.getItem('cart').split(',');
+    this.shopCartItemCount = cartItems.length;
+  }
 
   onEnter(): void {
     this.router.navigate(['/search-result']);

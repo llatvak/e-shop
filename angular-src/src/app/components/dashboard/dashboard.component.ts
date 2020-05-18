@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit, AfterViewInit  {
     private formBuilder: FormBuilder
   ) { }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     // Fetch all items to display in table
     this.itemService.getItems().subscribe((data) => {
       this.items = data;
@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit, AfterViewInit  {
   }
 
   // On log out clear storage and navigate to login page
-  onLogoutClick() {
+  onLogoutClick(): boolean {
     this.authService.logout();
     console.log('On log out');
     this.router.navigate(['/login']);

@@ -16,11 +16,20 @@ export class ShopItemComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    console.log(this.item);
   }
 
   detailsClicked(): void {
     // Route to details and add data
     this.router.navigate([`/product-details/${this.item._id}`], {state: {data: this.item}});
+  }
+
+  addCartClicked(item: Item): void {
+    const cartItems: string[] = [];
+    cartItems.push(item._id);
+    if (localStorage.getItem('cart') !== null) {
+      console.log(localStorage.getItem('cart'));
+      cartItems.push(localStorage.getItem('cart'));
+    }
+    localStorage.setItem('cart', cartItems.toString());
   }
 }

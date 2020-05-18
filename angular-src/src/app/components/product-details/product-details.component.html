@@ -1,6 +1,6 @@
 <div *ngIf="item !== undefined" class="detail-container">
     <img src={{item.imageUrl}} width="80%" height="80%">
-    <p>{{item.name}}</p>
+    <h3>{{item.name}}</h3>
     <p>{{item.price}}</p>
     <div class="form-container">
         <form [formGroup]="productDetailForm" class="detail-form">
