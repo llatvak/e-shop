@@ -53,4 +53,15 @@ export class ProductDetailsComponent implements OnInit {
     //this.ngZone.onStable.pipe(take(1))
     //    .subscribe(() => this.autosize.resizeToFitContent(true));
   }
+
+  addCartClicked(item: Item): void {
+    if (this.productDetailForm.valid) {
+      const cartItems: string[] = [];
+      cartItems.push(item._id);
+      if (localStorage.getItem('cart') !== null) {
+        cartItems.push(localStorage.getItem('cart'));
+      }
+      localStorage.setItem('cart', cartItems.toString());
+    }
+  }
 }
