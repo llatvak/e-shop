@@ -14,21 +14,24 @@ export class ItemService {
   // Fetch all items
   getItems(): Observable<Item[]> {
     const url = this.baseUrl + 'items';
-    console.log(url);
     return this.http.get<Item[]>(url);
   }
 
   // Fetch one item
   getItem(id: string): Observable<Item> {
     const url = this.baseUrl + `items/${id}`;
-    console.log(url);
     return this.http.get<Item>(url);
   }
 
   // Delete one item
   deleteItem(id: string): Observable<Item> {
     const url = this.baseUrl + `items/${id}`;
-    console.log(url);
     return this.http.delete<Item>(url);
+  }
+
+  // Add one item
+  addItem(newItem: Item): Observable<Item> {
+    const url = this.baseUrl + 'items';
+    return this.http.post<Item>(url, newItem);
   }
 }

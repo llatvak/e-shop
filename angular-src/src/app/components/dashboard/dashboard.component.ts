@@ -82,7 +82,7 @@ export class DashboardComponent implements OnInit, AfterViewInit  {
   // Add item from form values
   submit(): boolean {
     if (this.addForm.valid) {
-      this.itemService.addItem().subscribe(data => {
+      this.itemService.addItem(this.addForm.value).subscribe(data => {
         console.log(data);
       });
     }
