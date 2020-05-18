@@ -4,8 +4,6 @@ import { Router } from '@angular/router';
 import { ItemService } from 'src/app/services/item.service';
 import { Item } from '../../item';
 import {MatPaginator} from '@angular/material/paginator';
-import {merge, of as observableOf} from 'rxjs';
-import {catchError, map, startWith} from 'rxjs/operators';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -34,8 +32,7 @@ export class DashboardComponent implements OnInit, AfterViewInit  {
   ngAfterViewInit() {
     this.itemService.getItems().subscribe((data) => {
       this.items = data;
-      const loadItems = this.loadItems.bind(this);
-      setTimeout(loadItems, 500);
+      setTimeout(() => this.loadItems(), 500);
     });
   }
 
