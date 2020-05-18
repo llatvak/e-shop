@@ -6,6 +6,7 @@ import { Item } from '../../item';
 import {MatPaginator} from '@angular/material/paginator';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { MatTableDataSource } from '@angular/material/table';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,6 +18,7 @@ export class DashboardComponent implements OnInit, AfterViewInit  {
   isLoadingResults = true;
   faTrash = faTrash;
   resultsLength = 0;
+  addForm: FormGroup;
   items: Item[] = [];
   data = new MatTableDataSource<Item>();
   displayedColumns: string[] = ['id', 'name', 'price', 'category', 'delete'];
@@ -27,6 +29,7 @@ export class DashboardComponent implements OnInit, AfterViewInit  {
     private authService: AuthService,
     private router: Router,
     private  itemService: ItemService,
+    private formBuilder: FormBuilder
   ) { }
 
   ngAfterViewInit() {
@@ -46,6 +49,12 @@ export class DashboardComponent implements OnInit, AfterViewInit  {
   }
 
   ngOnInit(): void {
+    this.addForm = this.formBuilder.group({
+      name: [null, [Validators.required]],
+      price: [null, [Validators.required]],
+      category: [null, [Validators.required]],
+      imageUrl: [null, Validators.required]
+    });
   }
 
   // On log out clear storage and navigate to login page
@@ -67,6 +76,16 @@ export class DashboardComponent implements OnInit, AfterViewInit  {
         this.data.paginator = this.paginator;
       });
     });
+    return false;
+  }
+
+  // Add item from form values
+  submit(): boolean {
+    if (this.addForm.valid) {
+      this.itemService.addItem().subscribe(data => {
+        console.log(data);
+      });
+    }
     return false;
   }
 

@@ -47,4 +47,32 @@
         <mat-paginator [length]="resultsLength" [pageSize]="10"></mat-paginator>
       </div>
     <button mat-raised-button color="warn" (click)="onLogoutClick()">Log Out</button>
-</div>
+    <div class="add-form-container">
+      <form [formGroup]="addForm" (submit)="submit()" class="item-form">
+        <legend><h2>Add new item</h2></legend>
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Price</mat-label>
+          <input matInput formControlName="price">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Category</mat-label>
+          <mat-select formControlName="category">
+            <mat-option value="option">Shoes</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Image url</mat-label>
+          <input matInput formControlName="imageUrl">
+        </mat-form-field>
+        <br>
+        <button mat-raised-button color="primary">Add Item</button>
+      </form>
+    </div>
+  </div>

@@ -39,3 +39,7 @@ table {
 button {
   margin-top: 20px;
 }
+
+.add-form-container {
+  margin: 20px 10px 10px 10px;
+}
