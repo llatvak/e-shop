@@ -33,23 +33,25 @@ export class ShopCartComponent implements OnInit {
             item: data,
             amount: 1
           };
-          // Calculate shop cart items total sum
-          const price = shopCartItem.item.price.substring(0, shopCartItem.item.price.length - 1);
-          this.totalSum += Number(price);
+          this.countTotalSum(shopCartItem);
           this.shopCartItems.push(shopCartItem);
         // If duplicate found loop through and increment that object's amount value
         } else {
           this.shopCartItems.forEach((shopItem) => {
             if (shopItem.id === data._id) {
               shopItem.amount++;
-              const price = shopItem.item.price.substring(0, shopItem.item.price.length - 1);
-              this.totalSum += Number(price);
+              this.countTotalSum(shopItem);
             }
           });
         }
       });
     });
-    setTimeout(() => console.log(this.shopCartItems), 500);
+  }
+
+  // Count total price by adding items
+  countTotalSum(item: ShopCartItem) {
+    const price = item.item.price.substring(0, item.item.price.length - 1);
+    this.totalSum += Number(price);
   }
 
   // TODO feature
