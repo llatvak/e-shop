@@ -63,6 +63,8 @@ export class DashboardComponent implements OnInit, AfterViewInit  {
       this.itemService.getItems().subscribe((data2: Item[]) => {
         this.items = this.items.filter(i => i !== elm);
         this.resultsLength = this.items.length;
+        this.data = new MatTableDataSource<Item>(this.items);
+        this.data.paginator = this.paginator;
       });
     });
     return false;
