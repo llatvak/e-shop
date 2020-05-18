@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Item } from 'src/app/item';
 import { ItemService } from 'src/app/services/item.service';
+import { ShopCartItem } from '../../shop-cart-item';
 
 @Component({
   selector: 'app-shop-cart',
@@ -11,44 +11,38 @@ import { ItemService } from 'src/app/services/item.service';
 export class ShopCartComponent implements OnInit {
 
   totalCartItems: number;
-  cartItems: Item[] = [];
-  some: Some[] = [];
+  shopCartItems: ShopCartItem[] = [];
 
   constructor(private itemService: ItemService) { }
 
   ngOnInit(): void {
     const cartIds = localStorage.getItem('cart').split(',');
     this.totalCartItems = cartIds.length;
+    // Temp array to store id's and check duplicate id's from
     const tempArray: string[] = [];
     // Fetch all items by id from local storage
-    cartIds.forEach((id, index) => {
+    cartIds.forEach((id) => {
       this.itemService.getItem(id).subscribe(data => {
-        // Check for duplicate values
+        // If no duplicate values initialize shop cart object with amount to
+        // stack duplicate values together
         if (!tempArray.includes(data._id)) {
           tempArray.push(data._id);
-          this.cartItems.push(data);
-          const tempObject = {
+          const shopCartItem = {
             id: data._id,
             item: data,
             amount: 1
           };
-          this.some.push(tempObject);
+          this.shopCartItems.push(shopCartItem);
+        // If duplicate found loop through and increment that object's amount value
         } else {
-          this.some.forEach((c) => {
-            if (c.id === data._id) {
-              c.amount++;
+          this.shopCartItems.forEach((shopItem) => {
+            if (shopItem.id === data._id) {
+              shopItem.amount++;
             }
           });
         }
       });
     });
-    setTimeout(() => console.log(this.some), 500);
+    setTimeout(() => console.log(this.shopCartItems), 500);
   }
-
-}
-
-export interface Some {
-  id: string;
-  item: Item;
-  amount: number;
 }
