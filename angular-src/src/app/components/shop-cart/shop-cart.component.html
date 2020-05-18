@@ -1,0 +1,8 @@
+<div class="shop-cart-container">
+    <h2>Shop cart ({{totalCartItems}} products)</h2>
+    <div *ngFor="let item of shopCartItems;">
+        <p>{{item.item.name}} - {{item.amount}} - {{item.item.price}}</p>
+    </div>
+    <h3><b>Total: {{totalSum}}€</b></h3>
+    <button mat-raised-button color="primary" (click)="checkoutClicked()">Checkout</button>
+</div>
