@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit, OnDestroy {
       email: [null, [Validators.required, Validators.pattern(this.emailRegx)]],
       password: [null, Validators.required]
     });
-    console.log(this.router.url);
     // Redirect to dashboard if user already logged in
     if (this.router.url === '/login' && this.authService.loggedIn()) {
         this.router.navigate(['/profile']);

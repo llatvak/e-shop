@@ -24,7 +24,6 @@ export class FeaturedItemsComponent implements OnInit, AfterViewInit, OnDestroy 
     this.itemService.getItems()
       .subscribe(data => {
         this.featuredShopItems = data;
-        console.log(this.featuredShopItems);
     });
   }
 
