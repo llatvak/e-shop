@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ItemService } from 'src/app/services/item.service';
 import { ShopCartItem } from '../../shop-cart-item';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons/';
 
 @Component({
   selector: 'app-shop-cart',
@@ -13,6 +14,8 @@ export class ShopCartComponent implements OnInit {
   totalCartItems: number;
   totalSum = 0;
   shopCartItems: ShopCartItem[] = [];
+  faPlus = faPlus;
+  faMinus = faMinus;
 
   constructor(private itemService: ItemService) { }
 
@@ -57,5 +60,20 @@ export class ShopCartComponent implements OnInit {
   // TODO feature
   checkoutClicked(): void {
     alert('Sorry! This feature is under development.');
+  }
+
+  plusClicked(item: ShopCartItem): boolean {
+    // Receive item, increment value and add to total price
+
+    // Add id to local storage
+    return false;
+  }
+
+  minusClicked(item: ShopCartItem): boolean {
+    // Receive item, decrement value and minus off total price unless
+    // amount 0, then delete item from list
+
+    // Remove id from local storage
+    return false;
   }
 }
