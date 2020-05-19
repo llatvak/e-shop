@@ -1,7 +1,6 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { ItemService } from '../../services/item.service';
 import { Item } from '../../item';
-import { MediaObserver } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -17,17 +16,10 @@ export class FeaturedItemsComponent implements OnInit, AfterViewInit, OnDestroy 
 
   constructor(
     private itemService: ItemService,
-    private cdRef: ChangeDetectorRef,
-    private mediaObserver: MediaObserver
+    private cdRef: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
-    this.mediaSub = this.mediaObserver.asObservable().subscribe(change => {
-      change.forEach((v) => {
-        console.log(v.mediaQuery, v.mqAlias);
-      });
-      console.log('_______');
-    });
     // Fetch all items and assign to local variable
     this.itemService.getItems()
       .subscribe(data => {

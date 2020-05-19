@@ -30,7 +30,6 @@ export class ProfileComponent implements OnInit {
   // On log out clear storage and navigate to login page
   onLogoutClick() {
     this.authService.logout();
-    console.log('On log out');
     this.router.navigate(['/login']);
     return false;
   }

@@ -42,11 +42,9 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.userResponse = data;
         if (this.userResponse.success) {
           this.authService.storeUserData(this.userResponse.token, this.userResponse.user);
-          console.log('On successful login');
           this.router.navigate(['/profile']);
         } else {
           // If login fails navigate back go login page
-          console.log('On error login');
           this.router.navigate(['/login']);
         }
       });

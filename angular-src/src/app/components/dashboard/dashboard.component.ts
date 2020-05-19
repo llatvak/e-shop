@@ -60,7 +60,6 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy  {
   // On log out clear storage and navigate to login page
   onLogoutClick(): boolean {
     this.authService.logout();
-    console.log('On log out');
     this.router.navigate(['/login']);
     return false;
   }

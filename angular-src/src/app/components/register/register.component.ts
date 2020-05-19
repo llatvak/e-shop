@@ -32,7 +32,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
       return;
     }
     // If all fields valid valid
-    console.log(this.registerForm.value);
     const user = this.registerForm.value;
 
     // Register user
@@ -41,11 +40,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
         if (this.dataRegister.success) {
           // Registration was ok redirect to login page -> save credentials
           // to database
-          console.log('onSuccess');
           this.router.navigate(['/login']);
         } else {
           // Registration failed return redirect to same page
-          console.log('onError');
           alert('Email already exists');
           this.router.navigate(['/register']);
         }
