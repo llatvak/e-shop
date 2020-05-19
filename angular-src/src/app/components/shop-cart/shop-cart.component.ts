@@ -71,7 +71,13 @@ export class ShopCartComponent implements OnInit {
     item.amount++;
     this.totalCartItems++;
     this.countTotalSum(item);
+
     // Add id to local storage
+    const cartItems: string[] = [];
+    cartItems.push(item.item._id);
+    cartItems.push(localStorage.getItem('cart'));
+    localStorage.setItem('cart', cartItems.toString());
+
     return false;
   }
 
@@ -85,6 +91,7 @@ export class ShopCartComponent implements OnInit {
     this.totalCartItems--;
     // Get all item id's from local storage and save to array
     const strings = localStorage.getItem('cart').split(',');
+
     // Loop through every array item and check if there are matching id
     for (let j = 0; j < strings.length; j++) {
       // Remove id if it matches item id and update local storage
