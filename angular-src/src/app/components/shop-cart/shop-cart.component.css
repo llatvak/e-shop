@@ -1,7 +1,15 @@
+.shop-item-container {
+    display: flex;
+    margin: 10px 0px 10px 10px;
+}
+
 a {
     margin: 0px 5px 0px 15px;
 }
 
-.shop-item-container {
-    display: flex;
+.mat-list-item {
+    padding: 20px 0px 20px 0px;
+    width: 95%;
+    max-width: 600px;
+    background-color: lightblue;
 }
