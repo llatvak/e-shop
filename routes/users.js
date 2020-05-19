@@ -18,7 +18,7 @@ router.post('/register', (req, res, next) => {
         }
         if(!user) {
             let newUser = {};
-            if(req.body.password === 'admin' && req.body.email === 'admin.admin@gmail.com') {
+            if(req.body.password === 'admin123' && req.body.email === 'admin123.admin@gmail.com') {
                 newUser = new User({
                     email: req.body.email,
                     password: req.body.password,
