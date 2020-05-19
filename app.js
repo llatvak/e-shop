@@ -23,9 +23,10 @@ mongoose.connection.on('error', (err) => {
 const app = express();
 
 const users = require('./routes/users');
+const items = require('./routes/items');
 
 // Port number
-const port = process.env.NODE_ENV ? process.env.PORT || 8080 : 3030;
+const port = process.env.NODE_ENV ? process.env.PORT || 8080 : 3000;
 
 // CORS
 app.use(cors());
@@ -42,7 +43,8 @@ app.use(passport.session());
 
 require('./config/passport')(passport);
 
-app.use('/users', users);
+app.use('/api/users', users);
+app.use('/api/items', items);
 
 // Index route
 app.get('/', (req, res) => {
@@ -50,9 +52,10 @@ app.get('/', (req, res) => {
 });
 
 // Redirect any other route to index.html
-app.get('*', (req, res) => {
+/*app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/index.html'))
 });
+*/
 
 // Server start
 app.listen(port, () => {

@@ -1,11 +1,10 @@
-<p>profile works!</p>
 <div class="profile">
     <div *ngIf="user">
-        <h2>Your profile:</h2>
+        <h2>Welcome to your profile!</h2>
         <h2>{{user.name}}</h2>
-        <ul>
-            <li>Email: {{user.email}}</li>
-        </ul>
+        <mat-list>
+            <mat-list-item>Email: {{user.email}}</mat-list-item>
+        </mat-list>
         <button mat-raised-button color="warn" (click)="onLogoutClick()">Log Out</button>
     </div>
 </div>

@@ -1,1 +1,15 @@
-<p>shop-cart works!</p>
+<div class="shop-cart-container">
+    <h2>Shop cart ({{totalCartItems}} products)</h2>
+    <mat-list role="list">
+        <mat-list-item class="shop-item-container" role="listitem" *ngFor="let item of shopCartItems; let i=index;">
+                <div>{{item.item.name}}<br>
+                Count: {{item.amount}}<br>
+                Price: {{item.item.price}}
+                <a href (click)="plusClicked(item, i)"><fa-icon [icon]="faPlus" size="md"></fa-icon></a>
+                <a href (click)="minusClicked(item, i)"><fa-icon [icon]="faMinus" size="md"></fa-icon></a>
+            </div>
+        </mat-list-item>
+    </mat-list>
+    <h3><b>Total: {{totalSum}}€</b></h3>
+    <button mat-raised-button color="primary" (click)="checkoutClicked()">Proceed to Checkout</button>
+</div>

@@ -1,13 +1,14 @@
 <!-- Template card for setting product items -->
 <mat-card class="product-card">
     <mat-card-title>
-        Nike shoes 1k
+        {{item.name}}
     </mat-card-title>
+    <img src={{item.imageUrl}} width="100%" height="100%" alt="Product image">
     <mat-card-content>
-        <img src="https://www.beflamboyant.com/wp-content/uploads/2019/11/ux-68-white-02@2x-1024x1024.jpg" width="300" height="300" alt="Product image">
+        {{item.price}}
     </mat-card-content>
     <mat-card-actions align="end">
-        <a mat-raised-button color="primary">ADD TO CART</a>
-        <a [routerLink]="['/product-details']" mat-stroked-button color="primary">VIEW DETAILS</a>
+        <button (click)="addCartClicked(item)" mat-raised-button color="primary">ADD TO CART</button>
+        <button (click)="detailsClicked()" mat-stroked-button color="primary">VIEW DETAILS</button>
     </mat-card-actions>
 </mat-card>

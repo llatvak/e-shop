@@ -9,17 +9,17 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuard } from './guards/auth.guard';
+import { FeaturedItemsComponent } from './components/featured-items/featured-items.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'shop-cart', component: ShopCartComponent },
   { path: 'search-result', component: SearchResultComponent },
-  { path: 'product-details', component: ProductDetailsComponent },
-  { path: 'product-details', component: ProductDetailsComponent },
+  { path: 'product-details/:id', component: ProductDetailsComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], data: {roles: 'admin'}},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
-  { path: '**', redirectTo: '', component: ShopItemComponent}
+  { path: '**', redirectTo: '', component: FeaturedItemsComponent}
 ];
 
 @NgModule({
