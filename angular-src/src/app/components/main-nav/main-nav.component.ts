@@ -15,7 +15,7 @@ export class MainNavComponent implements OnInit, DoCheck {
   faShoppingCart = faShoppingCart;
   faUserCircle = faUserCircle;
   faSearch = faSearch;
-  shopCartItemCount: number;
+  shopCartItemCount = 0;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -39,8 +39,12 @@ export class MainNavComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck(): void {
-    const cartItems = localStorage.getItem('cart').split(',');
-    this.shopCartItemCount = cartItems.length;
+    if (localStorage.getItem('cart') !== null && localStorage.getItem('cart') !== '') {
+      const cartItems = localStorage.getItem('cart').split(',');
+      this.shopCartItemCount = cartItems.length;
+    } else {
+      this.shopCartItemCount = 0;
+    }
   }
 
   onEnter(): void {

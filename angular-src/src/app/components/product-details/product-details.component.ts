@@ -58,7 +58,7 @@ export class ProductDetailsComponent implements OnInit {
     if (this.productDetailForm.valid) {
       const cartItems: string[] = [];
       cartItems.push(item._id);
-      if (localStorage.getItem('cart') !== null) {
+      if (localStorage.getItem('cart') !== null && localStorage.getItem('cart') !== '') {
         cartItems.push(localStorage.getItem('cart'));
       }
       localStorage.setItem('cart', cartItems.toString());

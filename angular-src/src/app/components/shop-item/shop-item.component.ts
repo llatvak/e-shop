@@ -26,8 +26,7 @@ export class ShopItemComponent implements OnInit {
   addCartClicked(item: Item): void {
     const cartItems: string[] = [];
     cartItems.push(item._id);
-    if (localStorage.getItem('cart') !== null) {
-      console.log(localStorage.getItem('cart'));
+    if (localStorage.getItem('cart') !== null && localStorage.getItem('cart') !== '') {
       cartItems.push(localStorage.getItem('cart'));
     }
     localStorage.setItem('cart', cartItems.toString());

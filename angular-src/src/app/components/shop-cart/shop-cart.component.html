@@ -1,11 +1,11 @@
 <div class="shop-cart-container">
     <h2>Shop cart ({{totalCartItems}} products)</h2>
     <mat-list role="list">
-        <mat-list-item role="listitem" *ngFor="let item of shopCartItems;">
+        <mat-list-item role="listitem" *ngFor="let item of shopCartItems; let i=index;">
             <div class="shop-item-container">
                 {{item.item.name}} - {{item.amount}} - {{item.item.price}}
-                <a href (click)="plusClicked(item)"><fa-icon [icon]="faPlus" size="md"></fa-icon></a>
-                <a href (click)="minusClicked(item)"><fa-icon [icon]="faMinus" size="md"></fa-icon></a>
+                <a href (click)="plusClicked(item, i)"><fa-icon [icon]="faPlus" size="md"></fa-icon></a>
+                <a href (click)="minusClicked(item, i)"><fa-icon [icon]="faMinus" size="md"></fa-icon></a>
             </div>
         </mat-list-item>
     </mat-list>
