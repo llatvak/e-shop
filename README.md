@@ -9,5 +9,5 @@ nodemon
 ```
 Open browser at url:
 ```
-localhost:3000
+http://localhost:3000/
 ```
