@@ -19,7 +19,7 @@
         </a>
       </span>
       <!-- Dashboard -->
-      <span *ngIf="authService.loggedIn()">
+      <span *ngIf="authService.loggedIn() && authService.isAdmin()">
         <a mat-list-item [routerLink]="['/dashboard']">
             Dashboard
         </a>
