@@ -53,7 +53,6 @@ export class AuthService {
     this.loadToken();
     headers = headers.append('Authorization', this.authToken);
     headers = headers.append('Content-Type', 'application/json');
-    console.log(headers.getAll('Authorization'));
     return this.http.get(`${this.baseUrl}users/profile`, {headers});
   }
 
@@ -70,6 +69,22 @@ export class AuthService {
     } else {
       const helper = new JwtHelperService();
       return !helper.isTokenExpired(localStorage.getItem('id_token'));
+    }
+  }
+
+  getRole(): string {
+    const tempUser = JSON.parse(localStorage.getItem('user'));
+    if (tempUser.email === 'admin.admin@gmail.com') {
+      return 'admin';
+    }
+  }
+
+  isAdmin() {
+    const tempUser = JSON.parse(localStorage.getItem('user'));
+    if (tempUser.email === 'admin.admin@gmail.com') {
+      return true;
+    } else {
+      return false;
     }
   }
 }
