@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { ItemService } from 'src/app/services/item.service';
@@ -13,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit, AfterViewInit  {
+export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy  {
 
   isLoadingResults = true;
   faTrash = faTrash;
@@ -85,8 +85,20 @@ export class DashboardComponent implements OnInit, AfterViewInit  {
       this.itemService.addItem(this.addForm.value).subscribe(data => {
         console.log(data);
       });
+      this.resetAddFields();
     }
     return false;
+  }
+
+  ngOnDestroy(): void {
+    this.resetAddFields();
+  }
+
+  resetAddFields(): void {
+    this.addForm.value.name = '';
+    this.addForm.value.price = '';
+    this.addForm.value.category = '';
+    this.addForm.value.imageUrl = '';
   }
 
 }
