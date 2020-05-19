@@ -74,14 +74,14 @@ export class AuthService {
 
   getRole(): string {
     const tempUser = JSON.parse(localStorage.getItem('user'));
-    if (tempUser.email === 'admin.admin@gmail.com') {
+    if (tempUser.email === 'admin123.admin@gmail.com' || tempUser.email === 'admin.admin@gmail.com') {
       return 'admin';
     }
   }
 
   isAdmin() {
     const tempUser = JSON.parse(localStorage.getItem('user'));
-    if (tempUser.email === 'admin.admin@gmail.com') {
+    if (tempUser.email === 'admin123.admin@gmail.com' || tempUser.email === 'admin.admin@gmail.com') {
       return true;
     } else {
       return false;
