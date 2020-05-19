@@ -51,8 +51,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.loginForm.value.email = '';
-    this.loginForm.value.password = '';
+    this.loginForm.reset();
   }
 
 }

@@ -7,6 +7,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-dashboard',
@@ -82,9 +83,11 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy  {
   submit(): boolean {
     if (this.addForm.valid) {
       this.itemService.addItem(this.addForm.value).subscribe(data => {
-        console.log(data);
+        this.items.push(data);
+        this.data = new MatTableDataSource<Item>(this.items);
+        this.data.paginator = this.paginator;
+        this.resetAddFields();
       });
-      this.resetAddFields();
     }
     return false;
   }
@@ -94,10 +97,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy  {
   }
 
   resetAddFields(): void {
-    this.addForm.value.name = '';
-    this.addForm.value.price = '';
-    this.addForm.value.category = '';
-    this.addForm.value.imageUrl = '';
+    this.addForm.reset();
   }
 
 }

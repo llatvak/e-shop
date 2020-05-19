@@ -51,8 +51,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.registerForm.value.email = '';
-    this.registerForm.value.password = '';
+    this.registerForm.reset();
   }
 
 }
