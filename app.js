@@ -52,10 +52,9 @@ app.get('/', (req, res) => {
 });
 
 // Redirect any other route to index.html
-/*app.get('*', (req, res) => {
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/index.html'))
 });
-*/
 
 // Server start
 app.listen(port, () => {
