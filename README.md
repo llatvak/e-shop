@@ -2,10 +2,15 @@
 
 Simple E-shop with Angular, Node.js, Express and MongoDB
 
+### Before running install dependencies
+On root folder:
+```
+npm install
+```
 ### Run instructions
 On root folder:
 ```
-nodemon
+node app.js
 ```
 Open browser at url:
 ```
