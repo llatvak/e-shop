@@ -2,6 +2,11 @@
 
 Simple E-shop with Angular, Node.js, Express and MongoDB
 
+https://flotsam-shop.herokuapp.com/
+
+Shop items
+
+
 ### Before running install dependencies
 On root folder:
 ```
