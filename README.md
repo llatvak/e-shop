@@ -5,16 +5,16 @@ Simple eShop with Angular, Node.js, Express and MongoDB
 https://flotsam-shop.herokuapp.com/
 
 +Browse items+
-![Shop items](https://imgur.com/a/HPQBxuU)
+![Shop items](https://i.imgur.com/eumaZk1.png)
 
 +Browse item details+
-![Shop item details](https://imgur.com/N7qRXhq)
+![Shop item details](https://i.imgur.com/N7qRXhq.png)
 
 +Manage eShop from admin dashboard+
-![eShop admin dashboard](https://imgur.com/dGPqMAa)
+![eShop admin dashboard](https://i.imgur.com/dGPqMAa.png)
 
 +Add items from admin dashboard+
-![eShop admin dashboard add items](https://imgur.com/5pi9onS)
+![eShop admin dashboard add items](https://i.imgur.com/5pi9onS.png)
 
 ### Before running install dependencies
 On root folder:
